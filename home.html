@@ -1,0 +1,584 @@
+<?php session_start()?>
+<html>
+
+<!-- Mirrored from dronsimulation.web.app/home.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Jun 2025 15:57:39 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title></title>
+
+<link rel="stylesheet" type="text/css" href="semantic/semantic.min.css">
+<script src="semantic/jquery.min.js"> </script>
+<script src="semantic/semantic.min.js"></script>
+<link href="semantic/datepicker.css" rel="stylesheet" type="text/css">
+<script src="semantic/datepicker.js"></script>
+<script>
+  var ORDERREF = '<?php echo $_SESSION['ORDERREF']?>';
+</script>
+<script src="nav.js"></script>
+
+<style>
+body{
+background-color:f1f1f1;
+}
+a{
+cursor:pointer;	
+}
+</style>
+</head>
+<body>
+    <div class="ui inverted huge borderless fixed fluid menu">
+      <a class="header item">Dron Services Control</a>
+    </div><br>
+
+
+<div class="ui fluid container center aligned" style="cursor:pointer;margin-top:40px">
+<div class="ui  tiny steps">
+  <div class="step" onclick="booking()">
+    <i class="plane icon"></i>
+    <div class="content">
+      <div class="title">DRON INFORMATION</div>
+      <div class="description">Select Which Dron to Deploy</div>
+    </div>
+  </div>
+  <div class="step " onclick="contact()" id="contactbtn">
+    <i class="truck icon"></i>
+    <div class="content">
+      <div class="title">Pickup &</div>
+      <div class="description">Destination</div>
+    </div>
+  </div>
+     <div class=" step" onclick="confirmdetails()" id="confimationbtn">
+    <i class=""></i>
+    <div class="content">
+      <div class="title">Deployment Sequence</div>
+      <div class="description">view Deployment sequence</div>
+    </div>
+  </div> 
+  
+  <div class=" step" id="billingbtn" onclick="billing()">
+    <i class="money icon"></i>
+    <div class="content">
+      <div class="title">Track Location</div>
+      <div class="description">View Current Drone Progress in real time</div>
+    </div>
+  </div>
+   
+</div>
+</div>
+<br>
+<div id="dynamic">
+
+<div class="ui container text" id="booking-page">
+<center><div class="ui attached message">
+  <div class="header">Select Available Dron Option</div>
+    <div class="header">Please do not select a dron already in use<span style="color:red;font-size:15px"><a href='index-2.html'>Cancel Deployment</a></span> </div> 
+  <p>Enter Bus booking info</p>
+</div></center>
+
+<form class="ui form attached  segment" ">
+   <div class="field">
+    
+	Click Here to selection available dron<label class="ui green submit button" onclick="myFunction()">Dron Options</label>
+	
+	
+<!-- //search bar starts here ut to center -->
+
+<div class="dropdown">
+    <div id="myDropdown" class="dropdown-content">
+    <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+    <a href="#modal-1">MK 1 Megatron</a>
+    <a href="#modal-2">MK11 Bumblebee</a>
+    <a href="#modal-3">MK13 Optimus</a>
+	<a href="#modal-5">MK14 StarScream</a>
+   
+  </div>
+</div>
+
+<div id="modal-1" class="modalDialog">
+	<div>
+		<a href="#close" title="Close" class="close">x</a>
+		<center>
+<h2>MK 1-Megatron</h2>
+<div class="card">
+  <img src="dronimg/megatron.jpg" alt="Avatar" style="width:100%">
+  <div class="container">
+    <h4><b>Dron Status: Available</b></h4> 
+    <p class="ui green submit button" onclick="contact()" id="contactbtn">Select this Drone</p> 
+  </div>
+</div>
+</center>
+	</div>
+</div>
+
+<div id="modal-2" class="modalDialog">
+	<div>
+		<a href="#close" title="Close" class="close">x</a>
+		<center>
+<h2>MK11 Bumblebee</h2>
+<div class="card">
+  <img src="dronimg/bumblebee.jpg" alt="Avatar" style="width:100%">
+  <div class="container">
+    <h4><b>Dron Status: Available</b></h4> 
+    <p class="ui green submit button" onclick="contact()" id="contactbtn">Select this Drone</p> 
+  </div>
+</div>
+</center>
+	</div>
+</div>
+<div id="modal-3" class="modalDialog">
+	<div>
+		<a href="#close" title="Close" class="close">x</a>
+		<center>
+<h2>MK13-Optimus</h2>
+<div class="card">
+  <img src="dronimg/Optimusprime.png" alt="Avatar" style="width:100%">
+  <div class="container">
+    <h4><b>drone Status: in Maintenance</b></h4> 
+    <p class="ui green submit button" >cannot Select this Dron</p> 
+  </div>
+</div>
+</center>
+	</div>
+</div>
+<div id="modal-5" class="modalDialog">
+	<div>
+		<a href="#close" title="Close" class="close">x</a>
+		<center>
+<h2>Call IT iatance</h2>
+<div class="card
+<div class="card">
+  <img src="dronimg/Optimusprime.png" alt="Avatar" style="width:100%">
+  <div class="container">
+    <h4><b>drone Status: in Maintenance</b></h4> 
+    <p class="ui green submit button" >cannot Select this Dron</p> 
+  </div>
+</div>
+  </div>
+</center>
+	</div>
+</div>
+<div id="modal-4" class="modalDialog">
+	<div>
+		<a href="#close" title="Close" class="close">x</a>
+		<center>
+<h2>Call IT Support Specialist for Technical Assiatance</h2>
+<div class="card">
+  <h1> 08138936556</h1>
+  <div class="container">
+     </div>
+</div>
+</center>
+	</div>
+</div>
+
+
+ <div style="text-align:center">
+ <div><label>call IT for Specific Information of Deployment</label></div>
+  <a href="#modal-4">Call Now </a>
+</div> 
+</div>
+ </form>
+</div>
+
+<script>
+/* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+function filterFunction() {
+  var input, filter, ul, li, a, i;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  div = document.getElementById("myDropdown");
+  a = div.getElementsByTagName("a");
+  for (i = 0; i < a.length; i++) {
+    txtValue = a[i].textContent || a[i].innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      a[i].style.display = "";
+    } else {
+      a[i].style.display = "none";
+    }
+  }
+}
+</script>
+<style>
+.dropbtn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius:20%;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #3e8e41;
+}
+
+#myInput {
+  box-sizing: border-box;
+  background-image: url('searchicon.html');
+  background-position: 14px 12px;
+  background-repeat: no-repeat;
+  font-size: 16px;
+  padding: 14px 20px 12px 45px;
+  border: none;
+  border-bottom: 1px solid #ddd;
+}
+
+#myInput:focus {outline: 3px solid #ddd;}
+
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f6f6f6;
+  min-width: 230px;
+  overflow: auto;
+  border: 1px solid #ddd;
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {background-color: #ddd;}
+
+.show {display: block;}
+</style>
+
+
+<!-- //search bar starts here ut to center -->
+
+  </div>
+  
+ 
+
+
+<div class="ui container text" id="contact-page" style="display:none">
+<div class="ui attached message">
+  <div class="header">Enter your Pickup Location Details! </div>
+   <div class="header">and customer Destination <span style="color:red;font-size:15px"><?php echo $_SESSION['ORDERREF']?> <a href='index-2.html'> Cancel Deployment</a></span> </div>
+  <p>Fill the required Fields</p>
+</div>
+<form class="ui form attached fluid loading segment" onsubmit="return billing(this)">
+<div class="field">
+    <label>Product Pickup Location</label>
+ <div class="field">
+    <select name="gender" required id="gender">
+      <option value="" selected disabled>--Choose Pickup Point--</option>
+      <option value="MALE">Unicron Store 1</option>
+	   <option value="MALE">Unicron Store 2</option>
+	    <option value="MALE">Unicron Store 3</option>
+      <option value="FEMALE">Cybertron Ultra Store1</option>
+	  <option value="FEMALE">Cybertron Ultra Store2</option>
+	        <option value="FEMALE">Cybertron Ultra Store3</option>
+
+
+    </select>
+  </div>   
+  </div>   
+   <div class="field">
+      <label>customers</label>
+      <input placeholder="Full name" type="text" id="fullname" required>
+    </div>
+
+  <div class="field">
+    <label>Enter Customers Location Coordinate</label>
+    <input placeholder="Mobile No/Contact or Email address" type="text" id="contact" required>
+  </div>
+
+ 
+ 
+ <div style="text-align:center">
+ <div><label>copy customers location Cordinates into the form above</label></div>
+ <p>Click the button to get your customers location.</p>
+
+<button onclick="getLocation()">Get Customers Location</button>
+
+<p id="demo"></p>
+
+<script>
+var x = document.getElementById("demo");
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPosition(position) {
+  x.innerHTML = "Latitude: " + position.coords.latitude + 
+  "<br>Longitude: " + position.coords.longitude;
+}
+</script>
+ <button class="ui green submit button">Submit Details</button>
+</div>
+  
+  </form>
+</div>
+
+<div class="ui container text" id="billing-page" style="display:none">
+<div class="ui attached message">
+  <div class="header">Location on the Map</div>
+    <div class="header"> View Current Progress in real time<span style="color:red;font-size:15px"><?php echo $_SESSION['ORDERREF']?> <a href='index-2.html'>Cancel Deployment</a></span> </div> 
+  <p>Enter click next to Proceed</p>
+</div>
+
+<form id=mechengine class="ui form attached fluid loading segment" onsubmit="return confirmdetails(this)">
+  <div class="field"> 
+
+<div class="mapouter"><div class="gmap_canvas"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15691.63459617841!2d7.439240449999999!3d10.5078611!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x104d355834371775%3A0x480195979abfe174!2s800283%2C%20Kaduna%2C%20Nigeria!5e0!3m2!1sen!2sus!4v1658226486968!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe><a href="https://fmovies-online.net/"></a><br><style>.mapouter{position:relative;text-align:right;height:500px;width:600px;}</style><a href="https://www.embedgooglemap.net/">google maps website embed</a><style>.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:600px;}</style></div></div>
+  
+ <div style="text-align:center">
+  <button class="ui green submit button">Next</button>
+</div>
+ </form>
+<div class="ui bottom attached warning message"><i class="icon help"></i><b id="payment-info"></b></div> 
+</div>
+</div>
+
+
+<div class="ui text" id ="confirmdetails-page" style="display:none">
+<link rel="stylesheet" href="../cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel="stylesheet" href="style.css">
+
+
+<!-- partial:index.partial.html -->
+<h1>Drone Delivery Sequence</h1>
+<div class="tabs">
+  
+  <input type="radio" id="tab1" name="tab-control" checked>
+  <input type="radio" id="tab2" name="tab-control">
+  <input type="radio" id="tab3" name="tab-control">  
+  <input type="radio" id="tab4" name="tab-control">
+  <ul>
+    <li title="Features"><label for="tab1" role="button"><svg viewBox="0 0 24 24"><path d="M14,2A8,8 0 0,0 6,10A8,8 0 0,0 14,18A8,8 0 0,0 22,10H20C20,13.32 17.32,16 14,16A6,6 0 0,1 8,10A6,6 0 0,1 14,4C14.43,4 14.86,4.05 15.27,4.14L16.88,2.54C15.96,2.18 15,2 14,2M20.59,3.58L14,10.17L11.62,7.79L10.21,9.21L14,13L22,5M4.93,5.82C3.08,7.34 2,9.61 2,12A8,8 0 0,0 10,20C10.64,20 11.27,19.92 11.88,19.77C10.12,19.38 8.5,18.5 7.17,17.29C5.22,16.25 4,14.21 4,12C4,11.7 4.03,11.41 4.07,11.11C4.03,10.74 4,10.37 4,10C4,8.56 4.32,7.13 4.93,5.82Z"/>
+</svg><br><span>Store-Pickup</span></label></li>
+    <li title="Delivery Contents"><label for="tab2" role="button"><svg viewBox="0 0 24 24"><path d="M2,10.96C1.5,10.68 1.35,10.07 1.63,9.59L3.13,7C3.24,6.8 3.41,6.66 3.6,6.58L11.43,2.18C11.59,2.06 11.79,2 12,2C12.21,2 12.41,2.06 12.57,2.18L20.47,6.62C20.66,6.72 20.82,6.88 20.91,7.08L22.36,9.6C22.64,10.08 22.47,10.69 22,10.96L21,11.54V16.5C21,16.88 20.79,17.21 20.47,17.38L12.57,21.82C12.41,21.94 12.21,22 12,22C11.79,22 11.59,21.94 11.43,21.82L3.53,17.38C3.21,17.21 3,16.88 3,16.5V10.96C2.7,11.13 2.32,11.14 2,10.96M12,4.15V4.15L12,10.85V10.85L17.96,7.5L12,4.15M5,15.91L11,19.29V12.58L5,9.21V15.91M19,15.91V12.69L14,15.59C13.67,15.77 13.3,15.76 13,15.6V19.29L19,15.91M13.85,13.36L20.13,9.73L19.55,8.72L13.27,12.35L13.85,13.36Z" />
+</svg><br><span>Dron in Progress</span></label></li>
+    <li title="Shipping"><label for="tab3" role="button"><svg viewBox="0 0 24 24">
+    <path d="M3,4A2,2 0 0,0 1,6V17H3A3,3 0 0,0 6,20A3,3 0 0,0 9,17H15A3,3 0 0,0 18,20A3,3 0 0,0 21,17H23V12L20,8H17V4M10,6L14,10L10,14V11H4V9H10M17,9.5H19.5L21.47,12H17M6,15.5A1.5,1.5 0 0,1 7.5,17A1.5,1.5 0 0,1 6,18.5A1.5,1.5 0 0,1 4.5,17A1.5,1.5 0 0,1 6,15.5M18,15.5A1.5,1.5 0 0,1 19.5,17A1.5,1.5 0 0,1 18,18.5A1.5,1.5 0 0,1 16.5,17A1.5,1.5 0 0,1 18,15.5Z" />
+</svg><br><span>Delivery Point</span></label></li>    <li title="Returns"><label for="tab4" role="button"><svg viewBox="0 0 24 24">
+    <path d="M11,9H13V7H11M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M11,17H13V11H11V17Z" />
+</svg><br><span>Returns</span></label></li>
+  </ul>
+  
+  <div class="slider"><div class="indicator"></div></div>
+  <div class="content">
+    <section><center>
+      <div class="card">
+  <img src="dronimg/task2.gif" alt="Avatar" style="width:">
+  <div class="container">
+    <h4><b>Drone Acquiring product from Store</b></h4> 
+    <a href="#tab1"><p class="ui green button"></p> </a>
+  </div>
+</div></center></section>
+        <section><center>
+          <h2>Delivery Contents</h2>
+          <div class="card">
+  <img src="dronimg/task3.gif" alt="Avatar" style="width:">
+  <div class="container">
+    <h4><b>Approaching Delivery Destination Point</b></h4> 
+    <a href="#tab1"><p class="ui green button">proceed</p> </a>
+  </div>
+</div></center></section>
+        <section><center>
+          <h2>Shipping</h2>
+          <div class="card">
+  <img src="dronimg/task4.gif" alt="Avatar" style="width:">
+  <img src="dronimg/track5.gif" alt="Avatar" style="width:">
+  <div class="container">
+    <h4><b>Dron Arriving at sutomers Location based on coordinate</b></h4> 
+    <a href="#tab1"><p class="ui green button">proceed</p> </a>
+  </div>
+</div></center></section>
+    <section>
+          <h2>Returns</h2>
+          <link rel="stylesheet" href="../cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="stylecard.css">
+<div id="container">	
+	
+	<div class="product-details">
+		
+	<h1>ARRIVAL AND  RETURN</h1>
+	<span class="hint-star star">
+		<i class="fa fa-star" aria-hidden="true"></i>
+		<i class="fa fa-star" aria-hidden="true"></i>
+		<i class="fa fa-star" aria-hidden="true"></i>
+		<i class="fa fa-star" aria-hidden="true"></i>
+		<i class="fa fa-star-o" aria-hidden="true"></i>
+	</span>
+		
+			<p class="information"> click the button below to reytun the drone following the return sequence which goes the same rouets as it comes.</p>
+
+		
+		
+<div class="control">
+	
+	<button class="btn">
+	 <span class="price">Done</span>
+   <span class="shopping-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
+   <span class="buy">Return Done</span>
+ </button>
+	
+</div>
+			
+</div>
+	
+<div class="product-image">
+	
+	<img src="dronimg/task3.gif" alt="">
+	
+
+<div class="info">
+	<h2> Delivery Status report</h2>
+	<ul>
+		<li><strong>Status : </strong>1complete </li>
+		<li><strong>Satisfaction: </strong>100%</li>
+		<li><strong>Time: </strong>12:15pm</li>
+		
+		
+	</ul>
+</div>
+</div>
+
+</div></section>
+  </div>
+</div>
+<!-- partial -->
+</div>
+
+</div>
+</body>
+
+<!-- //search bar starts here ut to center -->
+<style>
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width:100%;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.container {
+  padding: 2px 16px;
+  background-color:white;
+}
+img {
+  border: 5px #555;
+}
+</style>
+
+<style>
+<!-- //multiple modal starts here ut to center -->
+
+a{
+  display:inline-block;
+  text-decoration: none;
+  color: black;
+  background-color:white;
+  padding: 10px;
+}
+
+.modalDialog {
+	position: fixed;
+	font-family: Arial, Helvetica, sans-serif;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: white;
+	z-index: 99999;
+	opacity:0;
+	-webkit-transition: opacity 300ms ease-in;
+	-moz-transition: opacity 300ms ease-in;
+	transition: opacity 300ms ease-in;
+	pointer-events: none;
+}
+.modalDialog2 {
+	position: fixed;
+	font-family: Arial, Helvetica, sans-serif;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: white;
+	z-index: 99999;
+	opacity:0;
+	-webkit-transition: opacity 300ms ease-in;
+	-moz-transition: opacity 300ms ease-in;
+	transition: opacity 300ms ease-in;
+	pointer-events: none;
+}
+
+
+.modalDialog:target {
+	opacity:1;
+	pointer-events: auto;
+}
+.modalDialog2:target {
+	opacity:1;
+	pointer-events: auto;
+}
+
+.modalDialog > div {
+	width: 400px;
+	position: relative;
+	margin: 10% auto;
+	padding: 5px 20px 13px 20px;
+	background: white;
+	
+}
+.modalDialog2 > div {
+	width: 100%;
+	position: relative;
+	margin: 10% auto;
+	padding: 5px 20px 13px 20px;
+	background: white;
+	
+}
+
+.close {
+  padding: 0;
+	color:black;
+	line-height: 25px;
+	position: absolute;
+	right: 10px;
+	text-align: center;
+	top: 10px;
+	width: 24px;
+	text-decoration: none;
+  background:none;
+	font-weight: bold;
+}
+
+.close:hover { 
+color: #EA4436;
+}
+
+<!-- //multiple modal ends here ut to center -->
+
+</style>
+
+<!-- Mirrored from dronsimulation.web.app/home.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Jun 2025 15:58:04 GMT -->
+</html>
